@@ -110,7 +110,7 @@ This project includes pre-configured Cloudflare Pages headers in `public/_header
 - `X-Content-Type-Options: nosniff` (MIME sniffing prevention)
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `Cache-Control: public, max-age=31536000, immutable` for hashed `/assets/*`
-- SPA fallback rule in `public/_redirects` (`/* /index.html 200`)
+- Native SPA routing configured via `wrangler.jsonc` (`assets.not_found_handling = "single-page-application"`)
 
 ---
 

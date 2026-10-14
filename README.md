@@ -43,7 +43,7 @@ This repository powers **[chandrakiran.dev](https://chandrakiran.dev)**. It was 
 - **Glassmorphic Cards**: Hardware-accelerated `backdrop-filter: blur(12px)` and delicate borders.
 - **Zero Framework Overhead**: Styled completely with Vanilla CSS custom properties (design tokens) without heavyweight CSS utility frameworks.
 - **Micro-Animations & Smooth Motion**: Hardware-accelerated transitions that gracefully degrade with `prefers-reduced-motion`.
-- **Cloudflare Pages Optimized**: Includes custom routing headers (`_headers`) and SPA redirect rules (`_redirects`).
+- **Cloudflare Deployment**: Native SPA routing via `wrangler.jsonc` (`assets.not_found_handling = "single-page-application"`) and security headers (`_headers`).
 
 ---
 
@@ -115,7 +115,6 @@ graph TD
 chandrakiran-dev/
 ├── public/
 │   ├── _headers            # Security headers (HSTS, CSP, X-Frame-Options) & asset cache rules
-│   ├── _redirects          # SPA client-side routing fallback (/* /index.html 200)
 │   ├── favicon.svg         # Modern gradient monogram favicon
 │   └── icons.svg           # Scalable SVG sprite icons
 ├── src/
@@ -143,7 +142,8 @@ chandrakiran-dev/
 ├── DEPLOYMENT.md           # Step-by-step guide for Cloudflare Pages & Namecheap domain
 ├── package.json            # Scripts & project dependencies
 ├── tsconfig.json           # TypeScript configuration
-└── vite.config.ts          # Vite build configuration
+├── vite.config.ts          # Vite build configuration
+└── wrangler.jsonc          # Cloudflare static assets & SPA routing config
 ```
 
 ---
