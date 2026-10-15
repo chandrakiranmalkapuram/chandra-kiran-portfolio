@@ -45,6 +45,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .cache
 .turbo
+.wrangler/
 
 # Editor directories and files
 .vscode/*
