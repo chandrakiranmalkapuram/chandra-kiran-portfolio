@@ -5,7 +5,8 @@ export interface Env {
   CHECK_CHARACTER_ORIGIN?: string;
 }
 
-const DEFAULT_UPSTREAM_ORIGIN = 'https://argos-check-character.pages.dev';
+const DEFAULT_UPSTREAM_ORIGIN =
+  'https://argos-check-character.chandrakiranmalkapuram2000.workers.dev';
 
 interface ElementWithAttributes {
   getAttribute: (name: string) => string | null;
@@ -55,7 +56,7 @@ async function handleCheckCharacterProxy(
   const strippedPath = clientUrl.pathname.slice('/checkcharacter'.length) || '/';
   const upstreamUrl = new URL(strippedPath + clientUrl.search, upstreamOrigin);
 
-  // Clone headers and set appropriate host for Cloudflare Pages upstream
+  // Clone headers and set appropriate host for upstream Worker
   const upstreamHeaders = new Headers(request.headers);
   upstreamHeaders.set('host', upstreamUrl.host);
   upstreamHeaders.set('X-Forwarded-Host', clientUrl.host);
