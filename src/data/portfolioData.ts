@@ -53,8 +53,7 @@ export const projects: Project[] = [
     featured: true,
     tags: ['React 19', 'TypeScript', 'Vite', 'Supabase PostgreSQL', 'Web Speech API', 'Vitest'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/Argos-check-character',
-    // Live URL for Check Character (editable placeholder for live deployment)
-    liveUrl: 'https://argos-check-character.pages.dev',
+    liveUrl: 'https://chandrakiran.dev/checkcharacter/',
     description:
       'A responsive stockroom shelf verification and voice confusion mitigation platform designed for voice-directed picking headsets in high-volume retail warehouse environments.',
     detailedDescription:
