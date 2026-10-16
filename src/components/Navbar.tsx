@@ -5,29 +5,50 @@ import { personalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection?: string;
+  currentPath?: string;
+  onNavigate?: (path: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const isHome = currentPath === '/' || currentPath === '';
+
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'About', href: isHome ? '#about' : '/#about' },
+    { label: 'Skills', href: isHome ? '#skills' : '/#skills' },
+    { label: 'Projects', href: isHome ? '#projects' : '/#projects' },
+    { label: 'Articles', href: '/articles/', isPage: true },
+    { label: 'Experience', href: isHome ? '#experience' : '/#experience' },
+    { label: 'Education', href: isHome ? '#education' : '/#education' },
+    { label: 'Contact', href: isHome ? '#contact' : '/#contact' }
   ];
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (href: string, e: React.MouseEvent) => {
     setMobileMenuOpen(false);
+    if (onNavigate) {
+      if (href.startsWith('/articles') || href === '/' || href.startsWith('/#') || !isHome) {
+        e.preventDefault();
+        onNavigate(href);
+      }
+    }
   };
 
   return (
     <header className="navbar-header" role="banner">
       <div className="container navbar-container">
         {/* Brand Logo & Domain */}
-        <a href="#hero" className="navbar-brand" aria-label="Chandra Kiran Malkapuram - Home">
+        <a
+          href={isHome ? '#hero' : '/'}
+          className="navbar-brand"
+          aria-label="Chandra Kiran Malkapuram - Home"
+          onClick={(e) => {
+            if (!isHome && onNavigate) {
+              e.preventDefault();
+              onNavigate('/');
+            }
+          }}
+        >
           <div className="navbar-logo-badge" aria-hidden="true">CK</div>
           <div>
             <span style={{ fontWeight: 700 }}>{personalInfo.preferredName}</span>
@@ -39,10 +60,11 @@ export const Navbar: React.FC<NavbarProps> = () => {
         <nav className="navbar-links" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={link.label}
               href={link.href}
-              className="navbar-link"
-              onClick={handleLinkClick}
+              className={`navbar-link ${currentPath.startsWith('/articles') && link.label === 'Articles' ? 'active' : ''}`}
+              style={currentPath.startsWith('/articles') && link.label === 'Articles' ? { color: 'var(--accent-cyan)', fontWeight: 600 } : undefined}
+              onClick={(e) => handleLinkClick(link.href, e)}
             >
               {link.label}
             </a>
@@ -97,19 +119,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
         <nav className="mobile-nav-drawer" aria-label="Mobile Navigation">
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={link.label}
               href={link.href}
-              onClick={handleLinkClick}
+              onClick={(e) => handleLinkClick(link.href, e)}
             >
               {link.label}
             </a>
           ))}
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
             <a
-              href="#contact"
+              href={isHome ? '#contact' : '/#contact'}
               className="btn btn-primary btn-sm"
               style={{ width: '100%', justifyContent: 'center' }}
-              onClick={handleLinkClick}
+              onClick={(e) => handleLinkClick(isHome ? '#contact' : '/#contact', e)}
             >
               Get in Touch
             </a>

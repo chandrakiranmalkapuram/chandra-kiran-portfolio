@@ -5,9 +5,20 @@ import { personalInfo } from '../data/portfolioData';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = (path: string, e: React.MouseEvent) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(path);
+    }
   };
 
   return (
@@ -60,6 +71,44 @@ export const Footer: React.FC = () => {
               <ArrowUp size={18} />
             </button>
           </div>
+        </div>
+
+        {/* Footer Navigation Links */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <nav aria-label="Footer Navigation" className="footer-nav-links">
+            <a
+              href="/articles/"
+              className="footer-nav-link"
+              onClick={(e) => handleLinkClick('/articles/', e)}
+            >
+              Articles & Technical Guides
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <a
+              href="/privacy/"
+              className="footer-nav-link"
+              onClick={(e) => handleLinkClick('/privacy/', e)}
+            >
+              Privacy Policy
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <a
+              href="/terms/"
+              className="footer-nav-link"
+              onClick={(e) => handleLinkClick('/terms/', e)}
+            >
+              Terms of Use & Disclaimers
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <a
+              href="/checkcharacter/"
+              className="footer-nav-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Check Character Tool
+            </a>
+          </nav>
         </div>
 
         <div className="footer-bottom">
