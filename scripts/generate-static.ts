@@ -510,9 +510,154 @@ function generateTermsPage() {
   console.log('✓ Generated dist/terms/index.html');
 }
 
-console.log('Building pre-rendered static routes for SEO...');
-generateArticlesIndex();
-generateArticlePages();
-generatePrivacyPage();
-generateTermsPage();
-console.log('Static route pre-rendering complete!');
+// 5. Generate homepage pre-rendered fallback inside dist/index.html
+function generateHomepage() {
+  const homepageFallbackHtml = `
+    <header class="navbar-header" role="banner">
+      <div class="container navbar-container">
+        <a href="/" class="navbar-brand">
+          <div class="navbar-logo-badge" aria-hidden="true">CK</div>
+          <div>
+            <span style="font-weight: 700;">Chandra Kiran</span>
+            <span class="navbar-domain" style="display: block;">chandrakiran.dev</span>
+          </div>
+        </a>
+        <nav class="navbar-links" aria-label="Main Navigation">
+          <a href="#about" class="navbar-link">About</a>
+          <a href="#skills" class="navbar-link">Skills</a>
+          <a href="#projects" class="navbar-link">Projects</a>
+          <a href="/articles/" class="navbar-link">Articles</a>
+          <a href="#experience" class="navbar-link">Experience</a>
+          <a href="#contact" class="navbar-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <div class="container" style="padding-top: 5rem; padding-bottom: 4rem;">
+        <section class="section" id="hero" aria-label="Introduction">
+          <div class="section-tag" style="width: fit-content; margin-bottom: 1rem;">
+            <span>📍 Greater London, UK · Open to Opportunities</span>
+          </div>
+          <h1 class="hero-name" style="font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;">
+            Chandra Kiran Malkapuram
+          </h1>
+          <p style="font-size: 1.35rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 1.5rem;">
+            AI &amp; Cloud / DevOps Engineer
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 780px; margin-bottom: 2rem;">
+            Early-career AI and Cloud/DevOps Engineer with hands-on experience designing and shipping production infrastructure on Microsoft Azure, containerised microservices, and conversational AI products using Google Gemini and modern web technologies. Currently pursuing an MSc in Cloud Computing at the University of East London.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;">
+            <a href="/checkcharacter/" class="btn btn-primary">
+              <span>Check Character Tool</span>
+            </a>
+            <a href="/articles/" class="btn btn-secondary">
+              <span>Read Technical Articles</span>
+            </a>
+            <a href="https://github.com/chandrakiranmalkapuram" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/chandra-kiran-malkapuram/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" id="skills" aria-label="Core Competencies">
+          <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+            <h2 class="section-title" style="font-size: 1.75rem;">Core Competencies</h2>
+          </div>
+          <ul style="display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; padding: 0; margin-bottom: 3rem;">
+            <li class="pill-tag">Cloud-Native Architecture</li>
+            <li class="pill-tag">CI/CD &amp; Deployment Automation</li>
+            <li class="pill-tag">Containerisation (Docker)</li>
+            <li class="pill-tag">Generative AI &amp; LLM Integration</li>
+            <li class="pill-tag">Full-Stack TypeScript &amp; Python</li>
+            <li class="pill-tag">Infrastructure Security</li>
+          </ul>
+        </section>
+
+        <section class="section" id="projects" aria-label="Featured Projects &amp; Publications">
+          <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+            <h2 class="section-title" style="font-size: 1.75rem;">Featured Systems &amp; Technical Writing</h2>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <article class="glass-card" style="padding: 1.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+                Check Character &amp; Voice Confusion Platform
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                High-volume stockroom shelf validation tool and voice confusion risk reporting system designed for warehouse voice picking operations.
+              </p>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="/checkcharacter/" class="btn btn-primary btn-sm">Launch Tool</a>
+                <a href="/articles/check-character-calculation-algorithms/" class="btn btn-secondary btn-sm">Read Algorithm Guide</a>
+              </div>
+            </article>
+            <article class="glass-card" style="padding: 1.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+                Warehouse Voice Logistics &amp; Algorithms Hub
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Comprehensive educational series covering modulo 26 &amp; 99 algorithms, acoustic confusion analysis, reverse indexing 67,600 locations, and offline-first warehouse architectures.
+              </p>
+              <div>
+                <a href="/articles/" class="btn btn-secondary btn-sm">Browse All 5 Articles</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="contact" aria-label="Contact">
+          <div class="section-header" style="text-align: left; margin-bottom: 1rem;">
+            <h2 class="section-title" style="font-size: 1.75rem;">Contact &amp; Connect</h2>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            Open for engineering collaborations and opportunities. Contact directly at
+            <a href="mailto:chandrakiranmalkapuram2000@gmail.com" style="color: var(--text-accent);">chandrakiranmalkapuram2000@gmail.com</a>.
+          </p>
+        </section>
+      </div>
+    </main>
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-nav-links" style="margin-bottom: 1.5rem;">
+          <a href="/articles/" class="footer-nav-link">Articles</a> ·
+          <a href="/privacy/" class="footer-nav-link">Privacy Policy</a> ·
+          <a href="/terms/" class="footer-nav-link">Terms of Use</a> ·
+          <a href="/checkcharacter/" class="footer-nav-link">Check Character Tool</a>
+        </div>
+        <div class="footer-bottom">
+          <div>&copy; 2026 Chandra Kiran Malkapuram. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  `;
+
+  // Inject fallback HTML into <div id="root"></div> in the original in-memory template
+  if (!templateHtml.includes('<div id="root"></div>')) {
+    throw new Error('Template does not contain clean <div id="root"></div> placeholder.');
+  }
+
+  const finalHtml = templateHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">${homepageFallbackHtml}</div>`
+  );
+
+  fs.writeFileSync(path.join(distDir, 'index.html'), finalHtml, 'utf-8');
+  console.log('✓ Generated dist/index.html (homepage pre-rendered fallback)');
+}
+
+try {
+  console.log('Building pre-rendered static routes for SEO...');
+  generateArticlesIndex();
+  generateArticlePages();
+  generatePrivacyPage();
+  generateTermsPage();
+  // 5. Generate homepage pre-rendered fallback ONLY after all other routes succeed
+  generateHomepage();
+  console.log('Static route pre-rendering complete!');
+} catch (err) {
+  console.error('Fatal error during static route generation:', err);
+  process.exit(1);
+}

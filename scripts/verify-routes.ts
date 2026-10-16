@@ -45,10 +45,13 @@ for (const route of routes) {
   const desc = descMatch ? descMatch[1] : null;
 
   // Check for meaningful body content inside #root
-  const rootIndex = content.indexOf('<div id="root">');
+  const rootTagMatch = content.match(/<[a-z][a-z0-9-]*\b[^>]*?\s+id\s*=\s*["']root["'][^>]*>/i);
+  const rootIndex = rootTagMatch && rootTagMatch.index !== undefined
+    ? rootTagMatch.index + rootTagMatch[0].length
+    : -1;
   const bodyEndIndex = content.indexOf('</body>');
   const rootContent = rootIndex !== -1 && bodyEndIndex !== -1
-    ? content.substring(rootIndex + '<div id="root">'.length, bodyEndIndex).replace(/<\/div>\s*$/, '').trim()
+    ? content.substring(rootIndex, bodyEndIndex).replace(/<\/div>\s*$/, '').trim()
     : '';
 
   // Check for canonical URL
@@ -58,7 +61,7 @@ for (const route of routes) {
   if (!title || !desc || !canonical) {
     console.error(`❌ FAILED metadata check for ${route}`);
     failed++;
-  } else if (route !== '/' && rootContent.length < 200) {
+  } else if (rootContent.length < 200) {
     console.error(`❌ FAILED body content check for ${route} (content too short: ${rootContent.length} chars)`);
     failed++;
   } else {
@@ -66,7 +69,61 @@ for (const route of routes) {
     console.log(`   Title: ${title}`);
     console.log(`   Canonical: ${canonical}`);
     console.log(`   HTML Body Length: ${rootContent.length} chars`);
-    if (route.startsWith('/articles/')) {
+
+    if (route === '/') {
+      const h1Matches = content.match(/<h1[\s>]/gi) || [];
+      const exactOneH1 = h1Matches.length === 1;
+      const hasRootElement = /<[a-z][a-z0-9-]*\b[^>]*?\s+id\s*=\s*["']root["'][^>]*>/i.test(content);
+      const hasScriptEntry = /<script\b[^>]*?\s+type\s*=\s*["']module["'][^>]*>/i.test(content);
+      const hasCheckCharacterLink = content.includes('href="/checkcharacter/"');
+      const hasArticlesLink = content.includes('href="/articles/"');
+
+      const jsonLdTags = content.match(/<script type="application\/ld\+json">/gi) || [];
+      const hasSingleJsonLdTag = jsonLdTags.length === 1;
+
+      let jsonLdParsed = false;
+      let hasPerson = false;
+      let hasWebsite = false;
+
+      const jsonLdContentMatch = content.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
+      if (jsonLdContentMatch && hasSingleJsonLdTag) {
+        try {
+          const parsed = JSON.parse(jsonLdContentMatch[1]) as {
+            '@graph'?: Array<{ '@type'?: string }>;
+            '@type'?: string;
+          };
+          jsonLdParsed = true;
+          const graph = Array.isArray(parsed['@graph']) ? parsed['@graph'] : [parsed];
+          hasPerson = graph.some((item) => item?.['@type'] === 'Person');
+          hasWebsite = graph.some((item) => item?.['@type'] === 'WebSite');
+        } catch {
+          jsonLdParsed = false;
+        }
+      }
+
+      console.log(`   Exactly 1 H1 Tag: ${exactOneH1 ? 'Passed' : 'Failed (' + h1Matches.length + ')'}`);
+      console.log(`   Root Element (id="root"): ${hasRootElement ? 'Present' : 'Missing'}`);
+      console.log(`   App Entry Script (<script type="module">): ${hasScriptEntry ? 'Present' : 'Missing'}`);
+      console.log(`   Single JSON-LD Script Tag: ${hasSingleJsonLdTag ? 'Passed' : 'Failed (' + jsonLdTags.length + ')'}`);
+      console.log(`   JSON-LD Valid & Parsed: ${jsonLdParsed ? 'Passed' : 'Failed'}`);
+      console.log(`   Person & WebSite Schemas: ${hasPerson && hasWebsite ? 'Present' : 'Missing'}`);
+      console.log(`   Crawlable Links (/checkcharacter/ & /articles/): ${hasCheckCharacterLink && hasArticlesLink ? 'Present' : 'None'}`);
+
+      if (
+        !exactOneH1 ||
+        !hasRootElement ||
+        !hasScriptEntry ||
+        !hasSingleJsonLdTag ||
+        !jsonLdParsed ||
+        !hasPerson ||
+        !hasWebsite ||
+        !hasCheckCharacterLink ||
+        !hasArticlesLink
+      ) {
+        console.error('❌ FAILED homepage specific verification checks');
+        failed++;
+      }
+    } else if (route.startsWith('/articles/')) {
       const hasSchema = content.includes('"@type": "TechArticle"') || content.includes('"@type": "CollectionPage"');
       console.log(`   Schema.org Structured Data: ${hasSchema ? 'Present' : 'None'}`);
     }
