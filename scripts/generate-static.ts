@@ -89,10 +89,15 @@ function injectMetadata(html: string, options: {
   }
 
   // Inject prerendered body content inside <div id="root">...</div>
-  result = result.replace(
-    '<div id="root"></div>',
-    `<div id="root">${options.bodyContent}</div>`
-  );
+  const emptyRootRegex = /<div\b[^>]*?\bid=["']root["'][^>]*>\s*<\/div>/i;
+  const existingRootRegex = /(<div\b[^>]*?\bid=["']root["'][^>]*>)[\s\S]*(<\/div>\s*<\/body>)/i;
+  if (emptyRootRegex.test(result)) {
+    result = result.replace(emptyRootRegex, `<div id="root">${options.bodyContent}</div>`);
+  } else if (existingRootRegex.test(result)) {
+    result = result.replace(existingRootRegex, `$1${options.bodyContent}$2`);
+  } else {
+    throw new Error('Template does not contain <div id="root"> placeholder.');
+  }
 
   return result;
 }
@@ -634,15 +639,18 @@ function generateHomepage() {
     </footer>
   `;
 
-  // Inject fallback HTML into <div id="root"></div> in the original in-memory template
-  if (!templateHtml.includes('<div id="root"></div>')) {
-    throw new Error('Template does not contain clean <div id="root"></div> placeholder.');
-  }
+  // Inject fallback HTML into <div id="root">...</div> in the original in-memory template
+  const emptyRootRegex = /<div\b[^>]*?\bid=["']root["'][^>]*>\s*<\/div>/i;
+  const existingRootRegex = /(<div\b[^>]*?\bid=["']root["'][^>]*>)[\s\S]*(<\/div>\s*<\/body>)/i;
 
-  const finalHtml = templateHtml.replace(
-    '<div id="root"></div>',
-    `<div id="root">${homepageFallbackHtml}</div>`
-  );
+  let finalHtml = templateHtml;
+  if (emptyRootRegex.test(templateHtml)) {
+    finalHtml = templateHtml.replace(emptyRootRegex, `<div id="root">${homepageFallbackHtml}</div>`);
+  } else if (existingRootRegex.test(templateHtml)) {
+    finalHtml = templateHtml.replace(existingRootRegex, `$1${homepageFallbackHtml}$2`);
+  } else {
+    throw new Error('Template does not contain <div id="root"> placeholder.');
+  }
 
   fs.writeFileSync(path.join(distDir, 'index.html'), finalHtml, 'utf-8');
   console.log('✓ Generated dist/index.html (homepage pre-rendered fallback)');
