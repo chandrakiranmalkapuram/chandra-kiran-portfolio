@@ -117,10 +117,10 @@ export const articles: Article[] = [
           language: 'typescript',
           code: `/**
  * Store Check Character Mathematical Formulation
- * 
+ *
  * Location: c0, c1, c2, c3 (e.g. '1', '0', 'A', 'K')
  * Position Weights: W = [5, 7, 7, 3]
- * 
+ *
  * Sum = (ASCII(c0) * 5) + (ASCII(c1) * 7) + (ASCII(c2) * 7) + (ASCII(c3) * 3)
  * Remainder = Sum % 26
  * Check Character = NATO_PHONETIC_ALPHABET[Remainder]
@@ -189,12 +189,12 @@ export function calculateStoreCheckChar(location: string): string {
           language: 'typescript',
           code: `/**
  * RFC Check Character Formulation
- * 
+ *
  * Location: 4 letters (e.g. 'R', 'E', 'T', 'S')
  * Letter Value: v_i = ASCII(char) - 65 (0 to 25)
  * Base Offset: 45
  * Position Weights: W = [5, 7, 7, 3]
- * 
+ *
  * Sum = 45 + (v0 * 5) + (v1 * 7) + (v2 * 7) + (v3 * 3)
  * Check Digit = Sum % 99
  * Format: Spoken tens and units (e.g. 48 -> "FOUR EIGHT")
