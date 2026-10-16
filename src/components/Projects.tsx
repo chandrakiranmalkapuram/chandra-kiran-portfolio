@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { ExternalLink, FolderGit2, CheckCircle2, Star, Sparkles } from 'lucide-react';
+import { ExternalLink, FolderGit2, CheckCircle2, Star, Sparkles, BookOpen } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { projects } from '../data/portfolioData';
 import type { Project } from '../types';
 
-export const Projects: React.FC = () => {
+interface ProjectsProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
   const [filter, setFilter] = useState<'all' | 'ai-fullstack' | 'cloud-devops' | 'ml-research' | 'frontend'>('all');
 
   const filteredProjects = projects.filter((project) => {
@@ -143,6 +147,23 @@ export const Projects: React.FC = () => {
                     >
                       <span>Live Demo</span>
                       <ExternalLink size={14} />
+                    </a>
+                  )}
+
+                  {isCheckCharacter && (
+                    <a
+                      href="/articles/check-character-calculation-algorithms/"
+                      onClick={(e) => {
+                        if (onNavigate) {
+                          e.preventDefault();
+                          onNavigate('/articles/check-character-calculation-algorithms/');
+                        }
+                      }}
+                      className="btn btn-secondary btn-sm"
+                      aria-label="Read technical algorithm guide for Check Character"
+                    >
+                      <BookOpen size={14} />
+                      <span>Algorithm Guide</span>
                     </a>
                   )}
 

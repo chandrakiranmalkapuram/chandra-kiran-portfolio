@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://chandrakiran.dev/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Interactive Check Character App -->
+  <url>
+    <loc>https://chandrakiran.dev/checkcharacter/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Articles & Engineering Guides Hub -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Article 1: Warehouse Voice Picking Guide -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/warehouse-voice-picking-guide/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article 2: Check Character Calculation Algorithms -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/check-character-calculation-algorithms/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article 3: Acoustic Confusion Voice Picking Accuracy -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/acoustic-confusion-voice-picking-accuracy/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article 4: Reverse Lookup Warehouse Indexing Engineering -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/reverse-lookup-warehouse-indexing-engineering/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article 5: Offline Warehouse Web Apps Architecture -->
+  <url>
+    <loc>https://chandrakiran.dev/articles/offline-warehouse-web-apps-architecture/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://chandrakiran.dev/privacy/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms of Use & Disclaimers -->
+  <url>
+    <loc>https://chandrakiran.dev/terms/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

@@ -71,3 +71,46 @@ export interface PersonalInfo {
     email: string;
   };
 }
+
+export interface ArticleSection {
+  heading: string;
+  id: string;
+  paragraphs: string[];
+  codeBlock?: {
+    language: string;
+    code: string;
+    caption?: string;
+  };
+  table?: {
+    caption?: string;
+    headers: string[];
+    rows: string[][];
+  };
+  callout?: {
+    type: 'note' | 'tip' | 'warning' | 'info';
+    text: string;
+  };
+}
+
+export interface Article {
+  slug: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  publishedDate: string;
+  lastUpdated: string;
+  author: {
+    name: string;
+    title: string;
+    bio: string;
+  };
+  category: 'Voice Logistics' | 'Algorithms & Verification' | 'Acoustic Reliability' | 'Systems Architecture';
+  readTimeMinutes: number;
+  tags: string[];
+  sections: ArticleSection[];
+  relatedProject?: {
+    title: string;
+    url: string;
+    label: string;
+  };
+}
