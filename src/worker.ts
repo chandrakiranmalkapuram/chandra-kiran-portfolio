@@ -2,6 +2,9 @@ export interface Env {
   ASSETS: {
     fetch: (request: Request | string) => Promise<Response>;
   };
+  CHECK_CHARACTER?: {
+    fetch: (request: Request | string, init?: RequestInit) => Promise<Response>;
+  };
   CHECK_CHARACTER_ORIGIN?: string;
 }
 
@@ -36,7 +39,7 @@ export default {
     // 2. Proxy Check Character traffic under /checkcharacter/*
     if (url.pathname.startsWith('/checkcharacter/')) {
       const upstreamOrigin = env.CHECK_CHARACTER_ORIGIN || DEFAULT_UPSTREAM_ORIGIN;
-      return handleCheckCharacterProxy(request, url, upstreamOrigin);
+      return handleCheckCharacterProxy(request, url, upstreamOrigin, env.CHECK_CHARACTER);
     }
 
     // 3. Fallback: serve existing portfolio static assets with SPA routing
@@ -47,7 +50,10 @@ export default {
 async function handleCheckCharacterProxy(
   request: Request,
   clientUrl: URL,
-  upstreamOrigin: string
+  upstreamOrigin: string,
+  checkCharacterBinding?: {
+    fetch: (request: Request | string, init?: RequestInit) => Promise<Response>;
+  }
 ): Promise<Response> {
   // Strip the leading "/checkcharacter" prefix
   // e.g. "/checkcharacter/" -> "/"
@@ -72,7 +78,9 @@ async function handleCheckCharacterProxy(
   });
 
   try {
-    const upstreamResponse = await fetch(proxyRequest);
+    const upstreamResponse = checkCharacterBinding
+      ? await checkCharacterBinding.fetch(proxyRequest)
+      : await fetch(proxyRequest);
 
     // Handle redirects from upstream (301, 302, 307, 308)
     if ([301, 302, 307, 308].includes(upstreamResponse.status)) {
