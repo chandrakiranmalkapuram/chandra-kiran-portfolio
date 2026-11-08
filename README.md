@@ -220,7 +220,7 @@ export const personalInfo: PersonalInfo = {
   title: 'AI & Cloud / DevOps Engineer',
   badge: '📍 Greater London, UK · Open to Opportunities',
   domain: 'chandrakiran.dev',
-  email: 'chandrakiranmalkapuram2000@gmail.com',
+  email: 'chandrakiranmalkapuram@gmail.com',
   // ...
 };
 ```
@@ -278,7 +278,7 @@ npm run deploy
 | **🌐 Production Portfolio** | [chandrakiran.dev](https://chandrakiran.dev) |
 | **💼 LinkedIn** | [linkedin.com/in/chandra-kiran-malkapuram](https://www.linkedin.com/in/chandra-kiran-malkapuram/) |
 | **🐙 GitHub** | [@chandrakiranmalkapuram](https://github.com/chandrakiranmalkapuram) |
-| **📧 Direct Email** | [chandrakiranmalkapuram2000@gmail.com](mailto:chandrakiranmalkapuram2000@gmail.com) |
+| **📧 Direct Email** | [chandrakiranmalkapuram@gmail.com](mailto:chandrakiranmalkapuram@gmail.com) |
 | **📍 Location** | Greater London, United Kingdom |
 
 </div>

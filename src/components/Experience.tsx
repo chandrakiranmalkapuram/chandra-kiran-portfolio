@@ -1,5 +1,6 @@
 import React from 'react';
 import { Briefcase, CheckCircle2, Calendar, MapPin } from 'lucide-react';
+import { CerevynPipelinePreview } from './ProjectPreviews';
 import { experience } from '../data/portfolioData';
 
 export const Experience: React.FC = () => {
@@ -9,7 +10,7 @@ export const Experience: React.FC = () => {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <Briefcase size={14} />
+            <Briefcase size={13} />
             <span>Work History</span>
           </div>
           <h2 className="section-title">Professional Experience</h2>
@@ -22,8 +23,6 @@ export const Experience: React.FC = () => {
         <div className="experience-timeline">
           {experience.map((item) => (
             <div key={item.id} className="experience-item">
-              <span className="experience-marker" aria-hidden="true" />
-
               <div className="glass-card">
                 {/* Header: Role & Period */}
                 <div className="experience-header">
@@ -48,24 +47,31 @@ export const Experience: React.FC = () => {
                 </div>
 
                 {/* Summary Description */}
-                <p style={{ color: 'var(--text-secondary)', margin: '1rem 0', lineHeight: 1.6 }}>
+                <p className="experience-description">
                   {item.description}
                 </p>
+
+                {/* Visual Pipeline Illustration for Cloud/DevOps Internship */}
+                {item.id === 'cerevyn' && (
+                  <div style={{ margin: '1.25rem 0' }}>
+                    <CerevynPipelinePreview />
+                  </div>
+                )}
 
                 {/* Detailed Deliverables & Achievements */}
                 <ul className="experience-achievements" aria-label="Key responsibilities and achievements">
                   {item.achievements.map((ach, idx) => (
                     <li key={idx} className="experience-achievement-item">
-                      <CheckCircle2 size={16} style={{ color: 'var(--accent-cyan)', flexShrink: 0, marginTop: '2px' }} />
+                      <CheckCircle2 size={15} style={{ color: 'var(--accent-forest)', flexShrink: 0, marginTop: '3px' }} />
                       <span>{ach}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* Tech Stack Pills */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <div className="experience-tags">
                   {item.technologies.map((tech) => (
-                    <span key={tech} className="pill-tag accent">
+                    <span key={tech} className="pill-tag">
                       {tech}
                     </span>
                   ))}

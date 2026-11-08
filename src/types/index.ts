@@ -5,11 +5,15 @@ export interface Project {
   description: string;
   detailedDescription?: string;
   category: 'ai-fullstack' | 'cloud-devops' | 'ml-research' | 'frontend';
+  categoryLabel?: string;
   featured: boolean;
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
   highlights: string[];
+  status?: string;
+  problem?: string;
+  solution?: string;
 }
 
 export interface SkillCategory {

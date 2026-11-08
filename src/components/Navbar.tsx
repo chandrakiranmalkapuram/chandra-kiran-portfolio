@@ -51,24 +51,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
         >
           <div className="navbar-logo-badge" aria-hidden="true">CK</div>
           <div>
-            <span style={{ fontWeight: 700 }}>{personalInfo.preferredName}</span>
+            <span className="navbar-brand-name">{personalInfo.name}</span>
             <span className="navbar-domain" style={{ display: 'block' }}>{personalInfo.domain}</span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
         <nav className="navbar-links" aria-label="Main Navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`navbar-link ${currentPath.startsWith('/articles') && link.label === 'Articles' ? 'active' : ''}`}
-              style={currentPath.startsWith('/articles') && link.label === 'Articles' ? { color: 'var(--accent-cyan)', fontWeight: 600 } : undefined}
-              onClick={(e) => handleLinkClick(link.href, e)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isArticleActive = currentPath.startsWith('/articles') && link.label === 'Articles';
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`navbar-link ${isArticleActive ? 'active' : ''}`}
+                onClick={(e) => handleLinkClick(link.href, e)}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Action Buttons & Socials */}
@@ -94,11 +96,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
             <LinkedinIcon size={18} />
           </a>
           <a
-            href="#contact"
+            href={isHome ? '#contact' : '/#contact'}
             className="btn btn-primary btn-sm btn-contact"
+            onClick={(e) => {
+              if (!isHome && onNavigate) {
+                e.preventDefault();
+                onNavigate('/#contact');
+              }
+            }}
           >
             <span>Get in Touch</span>
-            <ArrowUpRight size={15} />
+            <ArrowUpRight size={14} />
           </a>
 
           {/* Mobile Hamburger Toggle */}
@@ -109,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -126,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
               {link.label}
             </a>
           ))}
-          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-subtle)' }}>
             <a
               href={isHome ? '#contact' : '/#contact'}
               className="btn btn-primary btn-sm"

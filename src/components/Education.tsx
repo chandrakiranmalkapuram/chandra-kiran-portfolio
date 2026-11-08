@@ -9,12 +9,12 @@ export const Education: React.FC = () => {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <GraduationCap size={14} />
-            <span>Academic Background</span>
+            <GraduationCap size={13} />
+            <span>Academic Foundations</span>
           </div>
-          <h2 className="section-title">Education & Qualifications</h2>
+          <h2 className="section-title">Education &amp; Qualifications</h2>
           <p className="section-subtitle">
-            Formal training in cloud architectures, distributed systems, containerisation, algorithms, and computational intelligence.
+            Formal training in cloud architectures, distributed computing, containerisation, algorithms, and computational intelligence.
           </p>
         </div>
 
@@ -22,7 +22,7 @@ export const Education: React.FC = () => {
         <div className="grid-2">
           {education.map((item) => (
             <div key={item.id} className="glass-card education-card">
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '0.4rem' }}>
                 <h3 className="education-degree">{item.degree}</h3>
                 {item.status && (
                   <span className={`pill-tag ${item.status === 'In Progress' ? 'accent' : ''}`}>
@@ -45,16 +45,16 @@ export const Education: React.FC = () => {
               </div>
 
               {item.description && (
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
                   {item.description}
                 </p>
               )}
 
               {item.modules && item.modules.length > 0 && (
-                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '1.15rem', borderTop: '1px solid var(--border-subtle)' }}>
                   <div className="education-modules-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <BookOpen size={13} />
-                    <span>Key Modules & Focus Areas</span>
+                    <span>Key Modules &amp; Academic Focus</span>
                   </div>
                   <div className="education-modules-list">
                     {item.modules.map((mod) => (
