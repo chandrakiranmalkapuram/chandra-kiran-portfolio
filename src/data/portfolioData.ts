@@ -14,13 +14,13 @@ export const personalInfo: PersonalInfo = {
   badge: '📍 Greater London, UK · Open to Opportunities',
   tagline: 'Building resilient cloud-native architectures, conversational AI systems, and modern web applications.',
   domain: 'chandrakiran.dev',
-  email: 'chandrakiranmalkapuram2000@gmail.com',
+  email: 'chandrakiranmalkapuram@gmail.com',
   location: 'Greater London, United Kingdom',
   availability: 'Available for full-time roles & engineering collaborations',
   shortBio:
-    'Early-career AI and Cloud/DevOps Engineer with hands-on experience designing and shipping production infrastructure on Microsoft Azure, containerised microservices, and conversational AI products using Google Gemini and modern web technologies. Currently pursuing an MSc in Cloud Computing at the University of East London.',
+    'Cloud & DevOps Engineer with hands-on internship and project experience deploying containerised microservices to Microsoft Azure, engineering automated CI/CD pipelines, and building grounded AI applications. MSc Cloud Computing candidate at the University of East London.',
   fullBio: [
-    'I am an engineer focused on the intersection of cloud infrastructure, applied artificial intelligence, and full-stack software development. My experience ranges from engineering multi-job CI/CD deployment pipelines on Azure with distroless Docker containers to building grounded conversational retail assistants and warehouse operational tools.',
+    'I am an engineer focused on cloud infrastructure, container orchestration, and applied AI systems. Through hands-on internship and project work, my experience includes deploying containerised microservices on Microsoft Azure, authoring multi-job GitHub Actions pipelines, and building grounded conversational tools and warehouse logistics engines.',
     'I believe production discipline matters at every stage: clean architecture, deterministic builds, container security, comprehensive documentation, and accessible user interfaces that solve real-world operational problems.',
     'Currently reading for an MSc in Cloud Computing at the University of East London, deepening my formal grounding in distributed systems, cloud security, container orchestration, and DevOps engineering alongside practical shipping experience.'
   ],
@@ -40,17 +40,23 @@ export const personalInfo: PersonalInfo = {
   socials: {
     github: 'https://github.com/chandrakiranmalkapuram',
     linkedin: 'https://www.linkedin.com/in/chandra-kiran-malkapuram/',
-    email: 'chandrakiranmalkapuram2000@gmail.com'
+    email: 'chandrakiranmalkapuram@gmail.com'
   }
 };
 
 export const projects: Project[] = [
   {
     id: 'check-character',
-    title: 'Check Character & Voice Confusion Risk System',
-    subtitle: 'High-Volume Stockroom Validation & Acoustic Confusion Reporting Platform',
+    title: 'Check Character & Voice Confusion Platform',
+    subtitle: 'High-Volume Stockroom Validation & Acoustic Confusion Reporting System',
     category: 'ai-fullstack',
+    categoryLabel: 'RETAIL & LOGISTICS SYSTEMS',
     featured: true,
+    status: 'Production · Live Tool',
+    problem:
+      'Voice-directed picking in high-volume retail warehouses causes picking errors and inventory drift when acoustic noise or similar-sounding letters lead to misheard check characters.',
+    solution:
+      'Engineered an independent dual calculation engine for Store (modulo 26) and RFC (modulo 99) locations, NATO phonetic speech synthesis, client-side store coordinate inverted index (00AA–99ZZ), and an open voice confusion risk reporting platform with Supabase PostgreSQL and Vitest.',
     tags: ['React 19', 'TypeScript', 'Vite', 'Supabase PostgreSQL', 'Web Speech API', 'Vitest'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/Argos-check-character',
     liveUrl: 'https://chandrakiran.dev/checkcharacter/',
@@ -61,9 +67,59 @@ export const projects: Project[] = [
     highlights: [
       'Dual Store & RFC calculation engines decoupled from UI components',
       'NATO phonetic speech synthesis with Web Speech API audio playback',
-      'Inverted index reverse lookup across 67,600 warehouse store locations (00AA–99ZZ)',
+      'Inverted index reverse lookup across standard warehouse store coordinates (00AA–99ZZ)',
       'Community Voice Confusion Risk reporting with anti-duplicate indexing & public moderation',
       'Strict TypeScript architecture with 80+ unit and integration tests (Vitest)'
+    ]
+  },
+  {
+    id: 'commitflow-ai',
+    title: 'CommitFlow AI',
+    subtitle: 'Autonomous Git-to-Social Engineering Narrative & Publishing Engine',
+    category: 'ai-fullstack',
+    categoryLabel: 'AI & DISTRIBUTED SYSTEMS',
+    featured: true,
+    status: 'Full-Stack Implementation',
+    problem:
+      'Software engineering teams lack an automated, grounded workflow to extract meaningful engineering updates from raw git commits and reliably distribute structured technical release narratives to developer networks.',
+    solution:
+      'Engineered an asynchronous content pipeline using BullMQ and Redis to process Git commit feeds, generate grounded technical posts using xAI Grok (grok-2-latest) with structured Zod schema validation, and publish directly via encrypted OAuth platform credentials (LinkedIn v2 API) with human approval workflows.',
+    tags: ['React 19', 'TypeScript', 'Node.js', 'Express 5', 'BullMQ', 'Redis', 'PostgreSQL', 'Prisma', 'xAI Grok', 'LinkedIn API'],
+    githubUrl: 'https://github.com/chandrakiranmalkapuram/commitflow-ai',
+    description:
+      'An automated engineering workflow platform that converts Git commits into grounded technical narratives and multi-platform publications with background queue processing and OAuth distribution.',
+    detailedDescription:
+      'Engineered an asynchronous content pipeline using BullMQ and Redis to process Git commit feeds, generate grounded technical posts using xAI Grok (grok-2-latest) with structured Zod schema validation, and publish directly to developer networks via encrypted OAuth tokens. Features review and approval workflows with automated status reconciliation.',
+    highlights: [
+      'Asynchronous job queue architecture with BullMQ & Redis handling background publishing',
+      'xAI Grok (grok-2-latest) prompt synthesis with strict Zod schema validation',
+      'Encrypted OAuth token management and platform publishing via LinkedIn v2 UGC API',
+      'Monorepo architecture with React 19, Express 5, and Prisma ORM on PostgreSQL'
+    ]
+  },
+  {
+    id: 'create-rota',
+    title: 'Create Rota',
+    subtitle: 'Multi-Tenant Enterprise Workforce Scheduling & Roster Engine',
+    category: 'cloud-devops',
+    categoryLabel: 'CLOUD & ENTERPRISE SYSTEMS',
+    featured: true,
+    status: 'Full-Stack Implementation',
+    problem:
+      'Organizational shift scheduling requires optimal constraint allocation, strict multi-tenant workspace isolation, secure authentication, and prevention of fraudulent account creation via disposable email domains.',
+    solution:
+      'Built a multi-tenant roster management engine featuring Argon2id password hashing, time-limited single-use email verification tokens, server-side disposable email filtering, Google OR-Tools constraint satisfaction shift optimization, and database-level workspace tenancy via PostgreSQL and Alembic migrations.',
+    tags: ['React 19', 'TypeScript', 'FastAPI', 'Python 3.11', 'PostgreSQL', 'SQLAlchemy', 'Alembic', 'Google OR-Tools', 'Argon2id'],
+    githubUrl: 'https://github.com/chandrakiranmalkapuram/create-rota',
+    description:
+      'An enterprise shift scheduling and workforce management system engineered with strict multi-tenant workspace isolation, secure authentication, and automated shift allocation.',
+    detailedDescription:
+      'Built a robust full-stack roster management engine featuring Argon2id password hashing, time-limited single-use email verification tokens, disposable email domain filtering, Google OR-Tools shift scheduling optimization, and strict database-level workspace tenancy isolation with foreign key constraints and Alembic migrations.',
+    highlights: [
+      'Multi-tenant workspace isolation preventing cross-tenant IDOR access at the query level',
+      'Constraint satisfaction shift optimization powered by Google OR-Tools solver',
+      'Cryptographically secure authentication with Argon2id and rate-limited token management',
+      'Server-side disposable email filtering engine and automated database migrations with Alembic'
     ]
   },
   {
@@ -71,10 +127,15 @@ export const projects: Project[] = [
     title: 'Retail AI Conversational Platform',
     subtitle: 'Conversational Retail Intelligence & Product Compatibility Engine',
     category: 'ai-fullstack',
+    categoryLabel: 'APPLIED CONVERSATIONAL AI',
     featured: true,
-    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Google Gemini 2.5 Flash', 'OpenRouter'],
+    status: 'Production Prototype',
+    problem:
+      'Frontline retail staff spend valuable minutes manually looking up accessory compatibility, order details, and inventory across fragmented store systems.',
+    solution:
+      'Built a modular Node.js/Express service integrating Google Gemini 2.5 Flash via OpenRouter with a dedicated prompt-builder grounding layer, hardware accessory compatibility matcher, and persistent session memory.',
+    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Google Gemini 2.5', 'OpenRouter'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/retail-ai-assistant',
-    liveUrl: undefined, // Optional live demo link
     description:
       'A full-stack conversational AI assistant designed to resolve frontline retail queries — product compatibility, order lookup, and store stock — without pulling staff away from customer service.',
     detailedDescription:
@@ -91,7 +152,13 @@ export const projects: Project[] = [
     title: 'Intelligent Location Recovery Assistant',
     subtitle: 'System Design for Warehouse Discrepancy Resolution',
     category: 'cloud-devops',
-    featured: true,
+    categoryLabel: 'SYSTEM DESIGN & ARCHITECTURE',
+    featured: false,
+    status: 'System Design Specification',
+    problem:
+      'When warehouse location codes are mistyped or misheard, stock misallocations cause cancelled picks and warehouse inefficiencies.',
+    solution:
+      'Authored an architectural specification for a non-invasive read-only overlay using multi-factor phonetic similarity scoring to rank candidate locations without risking live inventory drift.',
     tags: ['System Design', 'React', 'FastAPI', 'PostgreSQL', 'Phonetic Scoring'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/Argos-check-character',
     description:
@@ -109,7 +176,13 @@ export const projects: Project[] = [
     title: 'Diabetic Retinopathy Fused ML Framework',
     subtitle: 'Automated Retinal Image Classification & Classifier Fusion Pipeline',
     category: 'ml-research',
+    categoryLabel: 'MACHINE LEARNING & RESEARCH',
     featured: false,
+    status: 'Research Pipeline',
+    problem:
+      'Single machine learning classifiers struggle with high variance when detecting subtle retinal lesions across diverse diagnostic imaging conditions.',
+    solution:
+      'Extracted texture features using Gray-Level Co-occurrence Matrix (GLCM) and combined CNN, SVM, and ANN models through fuzzy decision fusion to improve generalization on the APTOS dataset.',
     tags: ['Python', 'CNN', 'SVM', 'ANN', 'Fuzzy Fusion', 'GLCM', 'Scikit-Learn'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/A-Novel-Fused-Machine-Learning-Framework-For-Prediction-of-Diabetic-Retinopathy',
     description:
@@ -127,10 +200,15 @@ export const projects: Project[] = [
     title: 'South Indian Temple Digital Invitation Platform',
     subtitle: 'Crafted Zero-Dependency Mobile Web Experience',
     category: 'frontend',
+    categoryLabel: 'CREATIVE FRONTEND & CANVAS',
     featured: false,
-    tags: ['HTML5', 'Modern CSS3', 'Vanilla JavaScript', 'Netlify', 'SVG Art'],
+    status: 'Live Web Experience',
+    problem:
+      'Standard event invitations are loaded with framework bloat, tracking scripts, and brittle mobile audio handling.',
+    solution:
+      'Designed and built completely in vanilla HTML5, CSS3, and JavaScript with scratch-to-reveal canvas physics, inline SVG art, and compliant audio handling.',
+    tags: ['HTML5 Canvas', 'Modern CSS', 'Vanilla JavaScript', 'SVG Art'],
     githubUrl: 'https://github.com/chandrakiranmalkapuram/Wedding-invitation-in-2-min',
-    liveUrl: 'https://chandrakiranmalkapuram.github.io/Wedding-invitation-in-2-min/',
     description:
       'A distinctive, mobile-first digital wedding invitation reflecting a traditional South Indian Hindu temple aesthetic, featuring scratch-to-reveal card physics and ambient audio control.',
     detailedDescription:
@@ -149,74 +227,75 @@ export const skillCategories: SkillCategory[] = [
     title: 'Cloud & Infrastructure',
     icon: 'Cloud',
     skills: [
-      { name: 'Microsoft Azure', level: 'Production', tag: 'Core' },
-      { name: 'Azure Container Apps', level: 'Production' },
-      { name: 'Azure Container Registry', level: 'Production' },
-      { name: 'Azure Static Web Apps', level: 'Production' },
-      { name: 'Azure DB for PostgreSQL', level: 'Production' },
-      { name: 'Cloudflare Pages', level: 'Deployment', tag: 'Web' },
-      { name: 'Linux Administration', level: 'Proficient' }
+      { name: 'Microsoft Azure' },
+      { name: 'Azure Container Apps' },
+      { name: 'Azure Container Registry' },
+      { name: 'Azure Static Web Apps' },
+      { name: 'Azure DB for PostgreSQL' },
+      { name: 'Cloudflare Workers & Pages' },
+      { name: 'Linux Administration' }
     ]
   },
   {
     title: 'DevOps & Automation',
     icon: 'Terminal',
     skills: [
-      { name: 'Docker & Distroless Containers', level: 'Production', tag: 'Core' },
-      { name: 'GitHub Actions (CI/CD)', level: 'Production', tag: 'Core' },
-      { name: 'YAML Pipeline Authoring', level: 'Production' },
-      { name: 'Git & Trunk-Based Workflows', level: 'Advanced' },
-      { name: 'Secret & Credential Management', level: 'Production' },
-      { name: 'Release Automation', level: 'Proficient' }
+      { name: 'Docker & Container Hardening' },
+      { name: 'GitHub Actions (CI/CD)' },
+      { name: 'YAML Pipeline Authoring' },
+      { name: 'Git & Trunk-Based Workflows' },
+      { name: 'Secret & Credential Management' },
+      { name: 'Release Automation' }
+    ]
+  },
+  {
+    title: 'Programming',
+    icon: 'Code2',
+    skills: [
+      { name: 'TypeScript' },
+      { name: 'Python' },
+      { name: 'JavaScript (ESNext)' },
+      { name: 'React (18 / 19)' },
+      { name: 'Node.js & Express' },
+      { name: 'FastAPI' },
+      { name: 'HTML5 & Modern CSS' }
     ]
   },
   {
     title: 'AI & Machine Learning',
     icon: 'Cpu',
     skills: [
-      { name: 'Large Language Models (LLMs)', level: 'Applied', tag: 'Core' },
-      { name: 'Google Gemini 2.5 Flash', level: 'Applied' },
-      { name: 'Prompt Engineering & Grounding', level: 'Advanced', tag: 'Core' },
-      { name: 'OpenRouter Multi-Provider API', level: 'Applied' },
-      { name: 'Machine Learning Pipelines', level: 'Academic' },
-      { name: 'CNN, SVM, ANN Classifier Fusion', level: 'Research' }
+      { name: 'Large Language Models (LLMs)' },
+      { name: 'xAI Grok (grok-2-latest)' },
+      { name: 'Google Gemini 2.5' },
+      { name: 'Prompt Engineering & Zod Grounding' },
+      { name: 'OpenRouter Multi-Provider API' },
+      { name: 'CNN, SVM & ANN Architectures' },
+      { name: 'Fuzzy Classifier Fusion' }
     ]
   },
   {
-    title: 'Frontend Engineering',
-    icon: 'Layout',
-    skills: [
-      { name: 'React (18 / 19)', level: 'Advanced', tag: 'Core' },
-      { name: 'TypeScript', level: 'Advanced', tag: 'Core' },
-      { name: 'JavaScript (ESNext)', level: 'Advanced' },
-      { name: 'Vite & Modern Tooling', level: 'Advanced' },
-      { name: 'Responsive Vanilla CSS & Tokens', level: 'Advanced' },
-      { name: 'Tailwind CSS', level: 'Proficient' },
-      { name: 'Web Speech API', level: 'Proficient' }
-    ]
-  },
-  {
-    title: 'Backend & Data',
+    title: 'Databases',
     icon: 'Database',
     skills: [
-      { name: 'Python', level: 'Advanced', tag: 'Core' },
-      { name: 'Node.js & Express', level: 'Proficient' },
-      { name: 'FastAPI', level: 'Proficient' },
-      { name: 'PostgreSQL & Supabase', level: 'Proficient', tag: 'Core' },
-      { name: 'RESTful API Design', level: 'Advanced' },
-      { name: 'Database Migrations & RLS', level: 'Proficient' }
+      { name: 'PostgreSQL' },
+      { name: 'Supabase' },
+      { name: 'Redis (BullMQ Queue)' },
+      { name: 'Prisma ORM & SQLAlchemy' },
+      { name: 'Alembic Database Migrations' },
+      { name: 'Row-Level Security (RLS)' }
     ]
   },
   {
-    title: 'Engineering Practices',
-    icon: 'ShieldCheck',
+    title: 'Development Tools',
+    icon: 'Wrench',
     skills: [
-      { name: 'Cloud-Native Architecture', level: 'Applied' },
-      { name: 'System Design', level: 'Applied' },
-      { name: 'Unit Testing (Vitest)', level: 'Advanced' },
-      { name: 'Security & Attack Surface Reduction', level: 'Applied' },
-      { name: 'Agile Collaboration', level: 'Applied' },
-      { name: 'Technical Documentation', level: 'Advanced' }
+      { name: 'Vite & Modern Tooling' },
+      { name: 'Vitest & Unit Testing' },
+      { name: 'Docker CLI' },
+      { name: 'BullMQ Queue System' },
+      { name: 'Oxlint & Code Quality' },
+      { name: 'Postman & REST Verification' }
     ]
   }
 ];
@@ -227,13 +306,13 @@ export const experience: ExperienceItem[] = [
     role: 'DevOps / Cloud Engineering Intern',
     company: 'Cerevyn Solutions',
     location: 'Remote',
-    period: '2024',
+    period: 'June–July 2026',
     type: 'Internship',
     description:
       'Owned the delivery of production cloud infrastructure for CerevakyaNet, an enterprise multilingual text-to-speech application supporting all 22 scheduled Indian languages plus English, collaborating directly with the team lead and software developers.',
     achievements: [
       'Designed and implemented an automated end-to-end CI/CD deployment pipeline in GitHub Actions, transitioning the system from manual deployments to repeatable, multi-job cloud releases.',
-      'Containerised backend Python services using distroless Docker images, minimising image footprints and drastically hardening security ahead of production rollout.',
+      'Containerised backend Python services using hardened multi-stage Dockerfiles with python:3.11-slim, minimising image footprints and reducing vulnerability attack surfaces ahead of production rollout.',
       'Configured Azure Container Registry (ACR) for private container image hosting and deployed microservices to Azure Container Apps for autoscaling container workloads.',
       'Deployed the frontend application to Azure Static Web Apps, configured custom domain SSL bindings, and safeguarded API credentials via GitHub Secrets.',
       'Diagnosed and resolved PostgreSQL database restoration issues on Azure Database for PostgreSQL, resolving dump-format mismatches and cross-version compatibility barriers.',
@@ -244,7 +323,7 @@ export const experience: ExperienceItem[] = [
       'Azure Container Apps',
       'Azure Container Registry',
       'Azure Static Web Apps',
-      'Docker (Distroless)',
+      'Docker (Slim Containers)',
       'GitHub Actions',
       'PostgreSQL',
       'Linux',

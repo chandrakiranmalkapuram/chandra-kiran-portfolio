@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="footer-top">
           <div>
             <div className="footer-domain">{personalInfo.domain}</div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
               {personalInfo.name} · {personalInfo.title}
             </p>
           </div>
@@ -39,8 +39,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               rel="noopener noreferrer"
               className="btn btn-secondary btn-icon-only"
               aria-label="GitHub Profile (opens in new tab)"
+              title="GitHub Profile"
             >
-              <GithubIcon size={18} />
+              <GithubIcon size={17} />
             </a>
 
             <a
@@ -49,41 +50,43 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               rel="noopener noreferrer"
               className="btn btn-secondary btn-icon-only"
               aria-label="LinkedIn Profile (opens in new tab)"
+              title="LinkedIn Profile"
             >
-              <LinkedinIcon size={18} />
+              <LinkedinIcon size={17} />
             </a>
 
             <a
               href={`mailto:${personalInfo.email}`}
               className="btn btn-secondary btn-icon-only"
-              aria-label="Send Email"
+              aria-label="Send Direct Email"
+              title="Send Direct Email"
             >
-              <Mail size={18} />
+              <Mail size={17} />
             </a>
 
             <button
               type="button"
               className="btn btn-secondary btn-icon-only"
               onClick={scrollToTop}
-              title="Back to Top"
-              aria-label="Back to Top"
+              title="Scroll to Top"
+              aria-label="Scroll to Top"
             >
-              <ArrowUp size={18} />
+              <ArrowUp size={17} />
             </button>
           </div>
         </div>
 
         {/* Footer Navigation Links */}
-        <div style={{ marginBottom: '1.5rem' }}>
+        <div style={{ marginBottom: '1.75rem' }}>
           <nav aria-label="Footer Navigation" className="footer-nav-links">
             <a
               href="/articles/"
               className="footer-nav-link"
               onClick={(e) => handleLinkClick('/articles/', e)}
             >
-              Articles & Technical Guides
+              Technical Articles &amp; Guides
             </a>
-            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <span style={{ color: 'var(--border-strong)' }}>·</span>
             <a
               href="/privacy/"
               className="footer-nav-link"
@@ -91,22 +94,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             >
               Privacy Policy
             </a>
-            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <span style={{ color: 'var(--border-strong)' }}>·</span>
             <a
               href="/terms/"
               className="footer-nav-link"
               onClick={(e) => handleLinkClick('/terms/', e)}
             >
-              Terms of Use & Disclaimers
+              Terms of Use &amp; Disclaimers
             </a>
-            <span style={{ color: 'rgba(255,255,255,0.1)' }}>·</span>
+            <span style={{ color: 'var(--border-strong)' }}>·</span>
             <a
               href="/checkcharacter/"
               className="footer-nav-link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Check Character Tool
+              Check Character Tool ↗
             </a>
           </nav>
         </div>
@@ -116,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             © {CURRENT_YEAR} {personalInfo.name}. All rights reserved.
           </div>
           <div>
-            Crafted with React, TypeScript & Vite. Configured for Cloudflare Pages.
+            Designed with restraint &amp; engineered with React 19, TypeScript &amp; Vite.
           </div>
         </div>
       </div>

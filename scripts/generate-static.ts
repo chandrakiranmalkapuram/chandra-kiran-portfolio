@@ -401,7 +401,7 @@ function generatePrivacyPage() {
           </section>
           <section class="article-section">
             <h2>5. Data Controller &amp; Your Rights</h2>
-            <p>Under the UK Data Protection Act 2018 and the GDPR, visitors have statutory rights regarding personal data provided via direct email (access, correction, or deletion). Contact: chandrakiranmalkapuram2000@gmail.com</p>
+            <p>Under the UK Data Protection Act 2018 and the GDPR, visitors have statutory rights regarding personal data provided via direct email (access, correction, or deletion). Contact: chandrakiranmalkapuram@gmail.com</p>
           </section>
         </article>
       </div>
@@ -543,13 +543,13 @@ function generateHomepage() {
           <div class="section-tag" style="width: fit-content; margin-bottom: 1rem;">
             <span>📍 Greater London, UK · Open to Opportunities</span>
           </div>
-          <h1 class="hero-name" style="font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;">
+          <h1 class="hero-name" style="font-size: 2.75rem; font-weight: 500; font-family: var(--font-serif); line-height: 1.2; margin-bottom: 0.75rem;">
             Chandra Kiran Malkapuram
           </h1>
-          <p style="font-size: 1.35rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 1.5rem;">
+          <p style="font-size: 1.25rem; color: var(--accent-forest); font-weight: 600; margin-bottom: 1.5rem;">
             AI &amp; Cloud / DevOps Engineer
           </p>
-          <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); max-width: 780px; margin-bottom: 2rem;">
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 780px; margin-bottom: 2rem;">
             Early-career AI and Cloud/DevOps Engineer with hands-on experience designing and shipping production infrastructure on Microsoft Azure, containerised microservices, and conversational AI products using Google Gemini and modern web technologies. Currently pursuing an MSc in Cloud Computing at the University of East London.
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;">
@@ -588,7 +588,7 @@ function generateHomepage() {
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
             <article class="glass-card" style="padding: 1.5rem;">
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-serif);">
                 Check Character &amp; Voice Confusion Platform
               </h3>
               <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
@@ -600,7 +600,29 @@ function generateHomepage() {
               </div>
             </article>
             <article class="glass-card" style="padding: 1.5rem;">
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-serif);">
+                CommitFlow AI
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Autonomous Git-to-social engineering narrative engine powered by BullMQ, Redis, xAI Grok (grok-2-latest) with structured Zod schema validation, and LinkedIn v2 API publishing.
+              </p>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="https://github.com/chandrakiranmalkapuram/commitflow-ai" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Source Code</a>
+              </div>
+            </article>
+            <article class="glass-card" style="padding: 1.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-serif);">
+                Create Rota
+              </h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                Multi-tenant enterprise workforce scheduling engine with Google OR-Tools shift constraint optimization, Argon2id hashing, and Alembic database tenancy isolation.
+              </p>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="https://github.com/chandrakiranmalkapuram/create-rota" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Source Code</a>
+              </div>
+            </article>
+            <article class="glass-card" style="padding: 1.5rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-serif);">
                 Warehouse Voice Logistics &amp; Algorithms Hub
               </h3>
               <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
@@ -613,13 +635,36 @@ function generateHomepage() {
           </div>
         </section>
 
+        <section class="section" id="experience" aria-label="Professional Experience">
+          <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+            <h2 class="section-title" style="font-size: 1.75rem;">Professional Experience</h2>
+          </div>
+          <article class="glass-card" style="padding: 1.5rem; margin-bottom: 3rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-family: var(--font-serif);">DevOps / Cloud Engineering Intern</h3>
+                <div style="color: var(--accent-forest); font-weight: 600;">Cerevyn Solutions · Remote</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">June–July 2026</div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 1rem 0;">
+              Owned the delivery of production cloud infrastructure for CerevakyaNet, an enterprise multilingual text-to-speech application supporting 22 Indian languages plus English on Microsoft Azure.
+            </p>
+            <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-left: 1.25rem;">
+              <li>Designed and implemented an automated end-to-end CI/CD deployment pipeline in GitHub Actions.</li>
+              <li>Containerised backend Python services using distroless Docker images on Azure Container Apps.</li>
+              <li>Configured Azure Static Web Apps, custom domain SSL bindings, and Azure Database for PostgreSQL.</li>
+            </ul>
+          </article>
+        </section>
+
         <section class="section" id="contact" aria-label="Contact">
           <div class="section-header" style="text-align: left; margin-bottom: 1rem;">
             <h2 class="section-title" style="font-size: 1.75rem;">Contact &amp; Connect</h2>
           </div>
           <p style="color: var(--text-secondary); margin-bottom: 1rem;">
             Open for engineering collaborations and opportunities. Contact directly at
-            <a href="mailto:chandrakiranmalkapuram2000@gmail.com" style="color: var(--text-accent);">chandrakiranmalkapuram2000@gmail.com</a>.
+            <a href="mailto:chandrakiranmalkapuram@gmail.com" style="color: var(--text-accent);">chandrakiranmalkapuram@gmail.com</a>.
           </p>
         </section>
       </div>

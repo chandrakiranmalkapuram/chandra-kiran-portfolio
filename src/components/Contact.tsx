@@ -33,7 +33,7 @@ export const Contact: React.FC = () => {
       return;
     }
 
-    // Build mailto link for static deployment (no backend required)
+    // Build mailto link for static deployment
     const mailtoSubject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
     const mailtoBody = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -43,7 +43,7 @@ export const Contact: React.FC = () => {
     // Open mail client
     window.location.href = mailtoUrl;
 
-    setStatusMessage('Opening your email client to send message...');
+    setStatusMessage('Opening your email client to dispatch message...');
     setTimeout(() => setStatusMessage(null), 5000);
   };
 
@@ -53,12 +53,12 @@ export const Contact: React.FC = () => {
         {/* Section Header */}
         <div className="section-header">
           <div className="section-tag">
-            <Mail size={14} />
-            <span>Get in Touch</span>
+            <Mail size={13} />
+            <span>Direct Channels</span>
           </div>
-          <h2 className="section-title">Let's Connect & Collaborate</h2>
+          <h2 className="section-title">Let's Connect &amp; Collaborate</h2>
           <p className="section-subtitle">
-            Whether discussing cloud architecture, Generative AI applications, software engineering opportunities, or technical inquiries — feel free to reach out.
+            Whether discussing cloud infrastructure, applied AI engineering, software development opportunities, or technical inquiries — feel free to reach out.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export const Contact: React.FC = () => {
             {/* Email Card with Copy Button */}
             <div className="contact-card-item">
               <div className="contact-icon-box" aria-hidden="true">
-                <Mail size={22} />
+                <Mail size={20} />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <span className="contact-card-label">Direct Email</span>
@@ -84,7 +84,7 @@ export const Contact: React.FC = () => {
                 title="Copy email to clipboard"
                 aria-label="Copy email address"
               >
-                {copied ? <Check size={14} style={{ color: 'var(--accent-emerald)' }} /> : <Copy size={14} />}
+                {copied ? <Check size={14} style={{ color: 'var(--accent-forest)' }} /> : <Copy size={14} />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
@@ -92,13 +92,13 @@ export const Contact: React.FC = () => {
             {/* Location Card */}
             <div className="contact-card-item">
               <div className="contact-icon-box" aria-hidden="true">
-                <MapPin size={22} />
+                <MapPin size={20} />
               </div>
               <div>
                 <span className="contact-card-label">Location</span>
                 <div className="contact-card-value">{personalInfo.location}</div>
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Open to Greater London, UK & Hybrid / Remote roles
+                  Open to Greater London, UK &amp; Hybrid / Remote opportunities
                 </span>
               </div>
             </div>
@@ -111,12 +111,12 @@ export const Contact: React.FC = () => {
               className="contact-card-item"
             >
               <div className="contact-icon-box" aria-hidden="true">
-                <LinkedinIcon size={22} />
+                <LinkedinIcon size={20} />
               </div>
               <div>
                 <span className="contact-card-label">LinkedIn</span>
                 <div className="contact-card-value">linkedin.com/in/chandra-kiran-malkapuram</div>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--accent-forest)' }}>
                   Connect on LinkedIn &rarr;
                 </span>
               </div>
@@ -130,13 +130,13 @@ export const Contact: React.FC = () => {
               className="contact-card-item"
             >
               <div className="contact-icon-box" aria-hidden="true">
-                <GithubIcon size={22} />
+                <GithubIcon size={20} />
               </div>
               <div>
                 <span className="contact-card-label">GitHub</span>
                 <div className="contact-card-value">github.com/chandrakiranmalkapuram</div>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Explore repositories & open source &rarr;
+                <span style={{ fontSize: '0.8rem', color: 'var(--accent-forest)' }}>
+                  Explore repositories &amp; open source &rarr;
                 </span>
               </div>
             </a>
@@ -145,9 +145,9 @@ export const Contact: React.FC = () => {
           {/* Right: Contact Form */}
           <div className="glass-card">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
-              <MessageSquare size={20} style={{ color: 'var(--accent-cyan)' }} />
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                Send a Message
+              <MessageSquare size={18} style={{ color: 'var(--accent-forest)' }} />
+              <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                Send a Direct Message
               </h3>
             </div>
 
@@ -155,7 +155,7 @@ export const Contact: React.FC = () => {
               <div className="grid-2">
                 <div className="form-group">
                   <label htmlFor="contact-name" className="form-label">
-                    Your Name <span style={{ color: 'var(--accent-cyan)' }}>*</span>
+                    Your Name <span style={{ color: 'var(--accent-forest)' }}>*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -171,7 +171,7 @@ export const Contact: React.FC = () => {
 
                 <div className="form-group">
                   <label htmlFor="contact-email" className="form-label">
-                    Your Email <span style={{ color: 'var(--accent-cyan)' }}>*</span>
+                    Your Email <span style={{ color: 'var(--accent-forest)' }}>*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -194,7 +194,7 @@ export const Contact: React.FC = () => {
                   id="contact-subject"
                   name="subject"
                   type="text"
-                  placeholder="e.g. Engineering Opportunity / Cloud Infrastructure"
+                  placeholder="e.g. Engineering Opportunity / Cloud Architecture"
                   className="form-input"
                   value={formData.subject}
                   onChange={handleChange}
@@ -203,7 +203,7 @@ export const Contact: React.FC = () => {
 
               <div className="form-group">
                 <label htmlFor="contact-message" className="form-label">
-                  Message <span style={{ color: 'var(--accent-cyan)' }}>*</span>
+                  Message <span style={{ color: 'var(--accent-forest)' }}>*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -221,10 +221,11 @@ export const Contact: React.FC = () => {
                   style={{
                     padding: '0.75rem 1rem',
                     borderRadius: 'var(--radius-sm)',
-                    background: 'rgba(0, 198, 255, 0.1)',
-                    border: '1px solid rgba(0, 198, 255, 0.3)',
-                    color: 'var(--text-primary)',
-                    fontSize: '0.875rem'
+                    backgroundColor: 'var(--accent-forest-tint)',
+                    border: '1px solid var(--border-accent)',
+                    color: 'var(--accent-forest)',
+                    fontSize: '0.875rem',
+                    fontWeight: 500
                   }}
                   role="status"
                 >
@@ -233,8 +234,8 @@ export const Contact: React.FC = () => {
               )}
 
               <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
-                <Send size={16} />
-                <span>Send Message via Email</span>
+                <Send size={15} />
+                <span>Send Message</span>
               </button>
             </form>
           </div>
